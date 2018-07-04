@@ -120,7 +120,7 @@ export class Login {
             body: JSON.stringify({ endpointFeatures: "Agent" }) //this means *war* that this client can work with bots (aka agents).
         }, (error:any, response:http.IncomingMessage, body:any) => {
             //now lets try retrieve registration token
-            if (!error && response.statusCode === 201 || response.statusCode === 301) {
+            if (!error && (response.statusCode === 201 || response.statusCode === 301)) {
                 var locationHeader = response.headers['location'];
                 //expecting something like this 'registrationToken=someSting; expires=someNumber; endpointId={someString}'
                 var registrationTokenHeader = response.headers['set-registrationtoken'];
